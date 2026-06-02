@@ -1,3 +1,12 @@
-@mixin radius_common($radius: 4px) {
+@use './variables.module' as v;
+
+/* Button */
+@mixin radius_common($radius: 2px) {
   border-radius: $radius;
+}
+
+@mixin btn($bRadius: 2px, $textColor: white, $bgColor: v.$accent) {
+  @include radius_common($bRadius);
+  color: $textColor;
+  background: $bgColor;
 }

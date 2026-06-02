@@ -1,9 +1,11 @@
+// import styles from './styles.module.scss';
+
 export default function Layout({ children }) {
+  // const { wrapLayout } = styles;
+
   return (
     <>
-      <main>
-        <div>{children}</div>
-      </main>
+      <div className='page-home'>{children}</div>
     </>
   );
 }

@@ -1,0 +1,248 @@
+@use '@styles/variables.module' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(253, 250, 246, 0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid $border;
+  transition: box-shadow 0.3s;
+}
+
+/* Header layout */
+.headerInner {
+  max-width: 100%;
+  padding-bottom: 18px;
+  padding-top: 18px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: $primary_color;
+  text-decoration: none;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .logoDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: $accent;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+}
+
+.searchBarWrapper {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  height: auto;
+  justify-content: end;
+  padding-left: 60px;
+
+  .searchBarInnerWrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+
+    input {
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      box-shadow: none;
+      box-sizing: border-box;
+      color: #000;
+      font-family: Poppins-Regular, sans-serif, arial;
+      font-size: 12px;
+      height: 36px;
+      line-height: 16px;
+      outline: 0;
+      padding: 9px 70px 9px 16px;
+      position: relative;
+      width: 100%;
+    }
+
+    .searchBtn {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 4px 4px 0;
+      color: #9e9b9b;
+      right: 0;
+      width: 50px;
+      bottom: 0;
+
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.searchBarInnerWrapper.focusedInput {
+  input {
+    border-color: $accent;
+  }
+
+  .searchBtn {
+    background: $accent;
+
+    i {
+      color: white;
+    }
+  }
+}
+
+/* Desktop menuItemWrapperigation */
+
+.navBar {
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.menuItemWrapper {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuItemWrapperInner {
+  // position: relative;
+
+  .antPopOver {
+    position: absolute;
+    border-top: 1px solid #f0f0f0;
+    top: 39px !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 12;
+
+    .antPopOverInnerWrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 32px 130px 24px 120px;
+    }
+  }
+}
+
+.menuItemWrapper .menuItem {
+  // position: relative;
+  color: $text-light;
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 18px;
+  padding-right: 58px;
+  transition: all 0.3s;
+  white-space: nowrap;
+
+  span {
+    display: block;
+    padding: 11px 0;
+    position: relative;
+  }
+
+  // &:hover {
+  //   color: $accent;
+  // }
+}
+
+.menuItemWrapper .menuItem span::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #c17f3e;
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.menuItemWrapper .menuItemWrapperInner:hover .menuItem span {
+  color: $accent;
+}
+
+.menuItemWrapper .menuItemWrapperInner:hover span::after {
+  transform: scaleX(1);
+}
+
+/* Header actions */
+.headerActions {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconButton:hover {
+  background: $sand;
+}
+
+.cartWrapper {
+  position: relative;
+}
+
+.cartDot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $accent;
+  border: 2px solid $warm-white;
+}
+
+/* Mobile menu button */
+.hamburgerButton {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburgerButton span {
+  display: block;
+  width: 24px;
+  height: 1.8px;
+  background: $text;
+  transition: all 0.3s;
+}
