@@ -6,44 +6,52 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(253, 250, 246, 0.94);
+  background: white;
   backdrop-filter: blur(16px);
   border-bottom: 1px solid $border;
   transition: box-shadow 0.3s;
 }
 
 /* Header layout */
+
+.scrolledHeaderInner {
+  background-color: #fff;
+  left: 0;
+  padding: 5px 76px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
 .headerInner {
   max-width: 100%;
   padding-bottom: 18px;
   padding-top: 18px;
   margin: 0 auto;
+}
+
+.headerInnerWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
 
+.scrolledHeaderInner .headerInnerWrapper {
+  padding-bottom: 9px;
+  padding-top: 9px;
+}
+
 /* Logo */
 .logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: $primary_color;
-  text-decoration: none;
-  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
 
-  .logoDot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: $accent;
-    display: inline-block;
-    flex-shrink: 0;
+  img {
+    background: #fff !important;
+    height: 60px;
+    width: auto !important;
   }
 }
 
@@ -53,7 +61,7 @@
   flex-grow: 1;
   height: auto;
   justify-content: end;
-  padding-left: 60px;
+  padding-left: 20px;
 
   .searchBarInnerWrapper {
     position: relative;
@@ -107,6 +115,11 @@
     i {
       color: white;
     }
+
+    &:hover {
+      background: $accent-light;
+      cursor: pointer;
+    }
   }
 }
 
@@ -136,6 +149,7 @@
     right: 0;
     width: 100%;
     z-index: 12;
+    background: white;
 
     .antPopOverInnerWrapper {
       display: flex;
@@ -147,37 +161,35 @@
 
 .menuItemWrapper .menuItem {
   // position: relative;
-  color: $text-light;
+  color: $text;
   display: block;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 18px;
   padding-right: 58px;
   transition: all 0.3s;
   white-space: nowrap;
+  text-transform: uppercase;
 
   span {
     display: block;
     padding: 11px 0;
     position: relative;
   }
-
-  // &:hover {
-  //   color: $accent;
-  // }
 }
 
 .menuItemWrapper .menuItem span::after {
   content: '';
   position: absolute;
   bottom: -4px;
-  top: 100%;
+  top: 98%;
   left: 0;
   right: 0;
   height: 2px;
   background: #c17f3e;
   transform: scaleX(0);
   transition: transform 0.3s;
+  z-index: 20;
 }
 
 .menuItemWrapper .menuItemWrapperInner:hover .menuItem span {

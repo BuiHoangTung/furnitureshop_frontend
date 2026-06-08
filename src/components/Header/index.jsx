@@ -5,64 +5,83 @@ import AccountIcon from '@icons/svgs/account.svg?react';
 import NotificationIcon from '@icons/svgs/notification.svg?react';
 import { dataMenu } from './constraint';
 import clsx from 'clsx';
+import { furnitureshop } from '@images/index';
 
-import { useState } from 'react';
-// import Layout from '../Layout';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [focusStatus, setFocusStatus] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 110);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
       <header id='header'>
         <div className='global-section-inner'>
-          <div className={clsx(styles.headerInner)}>
-            <a href='#' className={styles.logo}>
-              <span className={styles.logoDot}></span>
-              FurnitureShop
-            </a>
+          <div
+            className={
+              scrolled ? styles.scrolledHeaderInner : styles.headerInner
+            }
+          >
+            <div className={styles.headerInnerWrapper}>
+              <Link to='/' className={styles.logo}>
+                <img src={furnitureshop} alt='furnitureshop' />
+              </Link>
 
-            <div className={styles.searchBarWrapper}>
-              <div
-                className={clsx(styles.searchBarInnerWrapper, {
-                  [styles.focusedInput]: focusStatus,
-                })}
-              >
-                <input
-                  type='text'
-                  id='search-input-in'
-                  placeholder='Search for products and ideas'
-                  autoComplete='off'
-                  onFocus={() => {
-                    setFocusStatus(true);
-                  }}
-                  onBlur={() => setFocusStatus(false)}
-                />
+              <div className={styles.searchBarWrapper}>
+                <div
+                  className={clsx(styles.searchBarInnerWrapper, {
+                    [styles.focusedInput]: focusStatus,
+                  })}
+                >
+                  <input
+                    type='text'
+                    id='search-input-in'
+                    placeholder='Search for products and ideas'
+                    autoComplete='off'
+                    onFocus={() => {
+                      setFocusStatus(true);
+                    }}
+                    onBlur={() => setFocusStatus(false)}
+                  />
 
-                <button className={styles.searchBtn} disabled>
-                  <i className={clsx('fa-brands', 'fa-sistrix')}></i>
-                </button>
+                  <button className={styles.searchBtn} disabled={focusStatus}>
+                    <i className={clsx('fa-brands', 'fa-sistrix')}></i>
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.headerActions}>
-              <div className={styles.cartWrapper}>
-                <a href='#' className={styles.iconButton} aria-label='Cart'>
-                  <CartIcon width={25} height={25} color={'currentColor'} />
+              <div className={styles.headerActions}>
+                <div className={styles.cartWrapper}>
+                  <a href='#' className={styles.iconButton} aria-label='Cart'>
+                    <CartIcon width={25} height={25} color={'currentColor'} />
+                  </a>
+                  <div className={styles.cartDot}></div>
+                </div>
+                <a href='#' className={styles.iconButton} aria-label='Account'>
+                  <NotificationIcon
+                    width={25}
+                    height={25}
+                    color={'currentColor'}
+                  />
                 </a>
-                <div className={styles.cartDot}></div>
+                <a href='#' className={styles.iconButton} aria-label='Account'>
+                  <AccountIcon width={25} height={25} color={'currentColor'} />
+                </a>
               </div>
-              <a href='#' className={styles.iconButton} aria-label='Account'>
-                <NotificationIcon
-                  width={25}
-                  height={25}
-                  color={'currentColor'}
-                />
-              </a>
-              <a href='#' className={styles.iconButton} aria-label='Account'>
-                <AccountIcon width={25} height={25} color={'currentColor'} />
-              </a>
             </div>
           </div>
         </div>

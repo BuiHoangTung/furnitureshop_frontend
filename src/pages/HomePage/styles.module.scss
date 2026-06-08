@@ -1,0 +1,47 @@
+.heroSectionWrapper {
+  margin-bottom: 70px;
+  padding-top: 12px;
+}
+
+.shopFeatureWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  justify-content: center;
+  margin-bottom: 92px;
+
+  .shopFeatureContentWrapper {
+    padding: 0 42px;
+    position: relative;
+    text-align: center;
+
+    .featureIcon {
+      display: inline-block;
+      height: 35px;
+      margin-bottom: 14px;
+      width: auto;
+    }
+
+    .featureTitle {
+      color: #000;
+      font-family: Poppins-Bold, sans-serif, arial;
+      font-size: min(26px, 1.35vw);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .featureContent {
+      color: #000;
+      font-family: Poppins-Regular, sans-serif, arial;
+      font-size: min(17px, 0.88vw);
+    }
+
+    .featureBorder {
+      background: #bebebe;
+      bottom: 5px;
+      height: 78px;
+      position: absolute;
+      right: 0;
+      width: 1px;
+    }
+  }
+}
